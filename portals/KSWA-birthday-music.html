@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Captive Portal</title>
+<style>
+    body {
+        background-color: #111;
+        color: #0F0;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0; /* Remove default margin */
+        text-align: center; /* Center content horizontally */
+        padding-top: 50px; /* Optional: Adjust this value as needed */
+    }
+    .center-container {
+        /* Removed height: 100vh; */
+    }
+    #terminal {
+        text-align: left; /* Align text to the left */
+        white-space: pre; /* Preserve whitespace and line breaks */
+        overflow-x: auto; /* Adds horizontal scroll if needed */
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+        margin: 20px auto; /* Centered with margin */
+        padding: 10px;
+        background-color: #111; /* Optional: for better visibility */
+        color: #0F0; /* Optional: for better visibility */
+    }
+    #connectBtn {
+        display: inline-block; /* Changed to inline-block */
+        background: #0F0;
+        padding: 10px 20px;
+        color: #000;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+    <div class="center-container">
+        <a id="connectBtn" href="javascript:void(0);" onclick="startHack(); playHappyBirthday();">Connect</a>
+    </div>
+    <div id="terminal"></div>
+    <script>
+        var content = [
+            "Accessing device...",
+            "Device accessed ✔",
+            "Deleting files...",
+            "Files deleted ✔",
+            "Formatting device...",
+            "Device formatted ✔. \n\n",
+			"...........",
+			"Just Kidding! <3 \n", 
+			"    _   _      _       ____     ____   __   __                                ",
+			" |'| |'| U  /\"\\  u U|  _\"\\ uU|  _\"\\ u\\ \\ / /                                ",
+			"/| |_| |\\ \\/ _ \\/  \\| |_) |/\| |_) |/ \\ V /                                 ",
+			"U|  _  |u / ___ \\   |  __/   |  __/  U_|\"|_u                                ",
+			" |_| |_| /_/   \\_\\  |_|      |_|       |_|                                  ",
+			" //   \\\\  \\\\    >>  ||>>_    ||>>_ .-,//|(_                                 ",
+			"(_\") (\"_)(__)  (__)(__)__)  (__)__) \\_) (__)                                ",
+			"   ____               ____      _____    _   _    ____       _      __   __ ",
+			"U | __\")u    ___   U |  _\"\\ u  |_ \" _|  |'| |'|  |  _\"\\  U  /\"\\  u  \\ \\ / / ",
+			" \\|  _ \\/   |_\"_|   \\| |_) |/    | |   /| |_| |\\/| | | |  \\/ _ \\/    \\ V /  ",
+			"  | |_) |    | |     |  _ <     /| |\\  U|  _  |uU| |_| |\\ / ___ \\   U_|\"|_u ",
+			"  |____/   U/| |\\u   |_| \\_\\   u |_|U   |_| |_|  |____/ u/_/   \\_\\    |_|   ",
+			" _|| \\\\_.-,_|___|_,-.//   \\\\_  _// \\\\_  //   \\\\   |||_    \\\\    >>.-,//|(_  ",
+			"(__) (__\\_)–' '-(_/(__)  (__)(__) (__)(_\") (\"_)(__)_)  (__)  (__\\_) (__)   ",
+			"   _  __   ____                      _                                      ",
+			"  |\"|/ /  / __\"| u  __        __ U  /\"\\  u                                  ",
+			"  | ' /  <\\___ \\/   \\\"\\      /\"/  \\/ _ \\/                                    ",
+			"U/| . \\\\u u___) |   /\\ \\ /\\ / /\\  / ___ \\                                    ",
+			"  |_|\\_\\  |____/>> U  \\ V  V /  U/_/   \\_\\                                  ",
+			",-,>> \\\\-.) (__)  (__) ).-,_\\ /\\ /_,-. \\\\    >>                                  ",
+			" \\.)   (_/(__)      \\_)-'  '-(_/ (__)  (__)  "
+        ];
+ 
+        function startHack() {
+            var terminal = document.getElementById('terminal');
+            var counter = 0;
+            document.getElementById('connectBtn').style.display = 'none';
+            var intervalId = setInterval(function() {
+                terminal.textContent += content[counter++] + '\n';
+                if (counter === content.length) {
+                    clearInterval(intervalId);
+                }
+            }, 400);
+        }
+		function playHappyBirthday() {
+    /**
+     * This function plays the "Happy Birthday" song.
+     * It uses the Web Audio API to generate the audio and play it.
+     */
+
+    // Create an AudioContext instance
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    // Define the notes and durations for the "Happy Birthday" song
+    const notes = [
+        { note: 'C', duration: 500 },
+        { note: 'C', duration: 500 },
+        { note: 'D', duration: 1000 },
+        { note: 'C', duration: 1000 },
+        { note: 'F', duration: 1000 },
+        { note: 'E', duration: 2000 },
+        { note: 'C', duration: 500 },
+        { note: 'C', duration: 500 },
+        { note: 'D', duration: 1000 },
+        { note: 'C', duration: 1000 },
+        { note: 'G', duration: 1000 },
+        { note: 'F', duration: 2000 },
+        { note: 'C', duration: 500 },
+        { note: 'C', duration: 500 },
+        { note: 'C#', duration: 1000 },
+        { note: 'A#', duration: 1000 },
+        { note: 'A', duration: 1000 },
+        { note: 'F', duration: 2000 },
+        { note: 'D#', duration: 500 },
+        { note: 'D#', duration: 500 },
+        { note: 'D', duration: 1000 },
+        { note: 'B', duration: 1000 },
+        { note: 'G', duration: 1000 },
+        { note: 'F', duration: 2000 }
+    ];
+
+    // Function to create an oscillator for a given note
+    function createOscillator(note) {
+        const oscillator = audioContext.createOscillator();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = getFrequency(note);
+        return oscillator;
+    }
+
+    // Function to get the frequency of a given note
+    function getFrequency(note) {
+        const frequencies = {
+            'C': 261.63,
+            'C#': 277.18,
+            'D': 293.66,
+            'D#': 311.13,
+            'E': 329.63,
+            'F': 349.23,
+            'F#': 369.99,
+            'G': 392.00,
+            'G#': 415.30,
+            'A': 440.00,
+            'A#': 466.16,
+            'B': 493.88
+        };
+        return frequencies[note];
+    }
+
+    function playNote(note, duration, delay) {
+        setTimeout(() => {
+            const oscillator = createOscillator(note);
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            setTimeout(() => {
+                oscillator.stop();
+            }, duration);
+        }, delay);
+    }
+
+    let totalDuration = 0;
+    notes.forEach(note => {
+        playNote(note.note, note.duration, totalDuration);
+        totalDuration += note.duration;
+    });
+}
+		
+		
+    </script>
+</body>
+</html>
