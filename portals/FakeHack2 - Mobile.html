@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Captive Portal</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0F0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #terminal {
+            white-space: pre;
+            overflow: hidden;
+            margin: 0 auto;
+            padding: 10px;
+			font-size: 16px; /* Increased font size */
+        }
+        #connectBtn {
+            display: block;
+            position: absolute;
+            left: 20px;
+            background: #0F0;
+            padding: 10px 20px;
+            color: #000;
+            text-decoration: none;
+            margin-top: 20px;
+		    font-size: 32px; /* Increased font size */
+        }
+    </style>
+</head>
+<body>
+    <a id="connectBtn" href="javascript:void(0);" onclick="startHack();">Connect</a>
+    <div id="terminal"></div>
+    <script>
+        var content = [
+            "Accessing device...",
+            "Device accessed ✔",
+            "Deleting files...",
+            "Files deleted ✔",
+            "Formatting device...",
+            "Device formatted ✔. \n\n",
+            "(⁠☞⁠ ͡⁠°⁠ ͜⁠ʖ⁠ ͡⁠°⁠)⁠☞",
+            "ᕙ⁠(͡⁠°⁠‿⁠ ͡⁠°⁠)⁠ᕗ",
+			"...........",
+			"Just Kidding! <3",
+        ];
+
+        function startHack() {
+            var terminal = document.getElementById('terminal');
+            var counter = 0;
+            document.getElementById('connectBtn').style.display = 'none';
+            var intervalId = setInterval(function() {
+                terminal.textContent += content[counter++] + '\n';
+                if (counter === content.length) {
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
